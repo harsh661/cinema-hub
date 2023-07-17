@@ -77,7 +77,7 @@ const Tv = () => {
             <span className="flex items-center flex-wrap gap-2">
               {tv?.spoken_languages?.map((language) => (
                 <span
-                  key={language.id}
+                  key={language.iso_639_1}
                   className="text-light-text text-sm lg:text-base"
                 >
                   {language.english_name}
