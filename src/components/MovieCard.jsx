@@ -6,7 +6,7 @@ const MovieCard = (movie) => {
   const isMovie = !! movie.release_date
   const isTv = !! movie.first_air_date
   return (
-    <Link to={isTv ? `/tv/${movie.id}` : isMovie ? `/movie/${movie.id}` : `/tv/${movie.id}/season/${movie?.season_number}`} className="flex-shrink-0 w-36 sm:w-40 lg:w-52 group">
+    <Link to={isTv ? `/tv/${movie.id}` : isMovie ? `/movie/${movie.id}` : `/tv/${movie.id}/season/${movie?.season_number}`} className="flex-shrink-0 w-36 sm:w-40 lg:w-52 group animate-fade-in">
       <div className="rounded-lg overflow-hidden max-w-[208px]">
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
