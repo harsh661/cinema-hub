@@ -7,12 +7,10 @@ import { useContext, useEffect, useState } from "react"
 import { MoviesContext } from "../contexts/moviesContext.jsx"
 
 function App() {
-  const { movies, setMovies } = useContext(MoviesContext)
-  const [tv, setTv] = useState([])
+  const { movies, setMovies, tv, setTv } = useContext(MoviesContext)
   const [random, setRandom] = useState(0)
   useEffect(() => {
     if (movies.length === 0) {
-      console.log("fetching")
       const url = `https://api.themoviedb.org/3/trending/movie/day`
       const options = {
         method: "GET",
@@ -44,7 +42,7 @@ function App() {
   return (
     <>
       <Container>
-        <Backdrop src={movies[random].backdrop_path} banner title={movies[random].title}/>
+        <Backdrop src={movies[random]?.backdrop_path} banner link={`/movie/${movies[random]?.id}`} title={movies[random]?.title}/>
         <Heading title="Trending in Movies" />
         <Grid>
           {movies.map((movie) => (

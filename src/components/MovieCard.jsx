@@ -3,10 +3,11 @@ import { Link } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
 
 const MovieCard = (movie) => {
-  const isTv = movie.media_type === 'tv'
+  const isMovie = !! movie.release_date
+  const isTv = !! movie.first_air_date
   return (
-    <Link to={`${isTv ? `/`: `/movie/${movie.id}`}`} className="flex-shrink-0 w-36 sm:w-40 lg:w-52 group">
-      <div className="rounded-lg overflow-hidden">
+    <Link to={isTv ? `/tv/${movie.id}` : isMovie ? `/movie/${movie.id}` : `/tv/${movie.id}/season/${movie?.season_number}`} className="flex-shrink-0 w-36 sm:w-40 lg:w-52 group">
+      <div className="rounded-lg overflow-hidden max-w-[208px]">
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           alt={movie.title}
@@ -19,10 +20,11 @@ const MovieCard = (movie) => {
           {isTv ? movie.name : movie.title}
         </h1>
         <div className="flex items-center justify-between text-xs text-dark-text">
-          <span>{isTv ? movie.first_air_date.substring(0, 4): movie.release_date.substring(0, 4)}</span>
+          <span>{isTv ? movie?.first_air_date?.substring(0, 4): isMovie ? movie?.release_date?.substring(0, 4) : movie?.air_date?.substring(0, 4)}</span>
           <span className="flex items-center gap-1">
-            <AiFillStar />
-            {movie.vote_average}
+            <AiFillStar fill="#facc15"/>
+            {movie.vote_average.toFixed(1)
+            }
           </span>
         </div>
       </div>

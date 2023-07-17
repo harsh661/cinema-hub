@@ -9,7 +9,7 @@ const CompanyCard = ({ name, logo, country }) => {
         alt={name}
         className="w-14 h-14 md:w-20 md:h-20 rounded-full object-contain bg-white"
       />
-      <span className="text-xs sm:text-sm lg:text-base text-white whitespace-nowrap">{name}</span>
+      <span className="text-xs sm:text-sm text-white whitespace-nowrap">{name}</span>
     </div>
   )
 }

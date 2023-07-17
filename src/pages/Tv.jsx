@@ -9,9 +9,9 @@ import CompanyCard from "../components/CompanyCard"
 import { AiFillStar } from "react-icons/ai"
 import Button from "../components/Button"
 
-const Movie = () => {
+const Tv = () => {
   const params = useParams()
-  const [movie, setMovie] = useState({})
+  const [tv, setTv] = useState({})
   const [similar, setSimilar] = useState([])
 
   const options = {
@@ -23,16 +23,16 @@ const Movie = () => {
   }
 
   useEffect(() => {
-    if (Object.keys(movie).length == 0) {
-      fetch(`https://api.themoviedb.org/3/movie/${params.id}`, options)
+    if (Object.keys(tv).length == 0) {
+      fetch(`https://api.themoviedb.org/3/tv/${params.id}`, options)
         .then((res) => res.json())
         .then((json) => {
-          setMovie(json)
+          setTv(json)
           console.log(json)
         })
         .catch((err) => console.error("error:" + err))
 
-      fetch(`https://api.themoviedb.org/3/movie/${params.id}/similar`, options)
+      fetch(`https://api.themoviedb.org/3/tv/${params.id}/similar`, options)
         .then((res) => res.json())
         .then((json) => {
           setSimilar(json.results)
@@ -42,37 +42,40 @@ const Movie = () => {
     }
   }, [params.id])
 
-  if (Object.keys(movie).length == 0) return
+  if (Object.keys(tv).length == 0) return
 
   return (
     <>
-      <Backdrop src={movie?.backdrop_path} />
+      <Backdrop src={tv?.backdrop_path} />
       <Container>
         <div className="py-5 flex">
           <div className="rounded-lg overflow-hidden w-36 sm:w-40 lg:w-52 hidden md:block">
             <img
-              src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-              alt={movie?.title}
+              src={`https://image.tmdb.org/t/p/original${tv?.poster_path}`}
+              alt={tv?.name}
               className="w-full transition-transform duration-200"
             />
           </div>
           <div className="flex flex-col gap-2 justify-between text-dark-text p-0 md:p-5">
             <h1 className="text-white font-medium text-2xl lg:text-3xl">
-              {movie?.title}
+              {tv?.name}
             </h1>
-            <span className="text-base lg:text-lg">{movie?.tagline}</span>
+            <span className="text-base lg:text-lg">{tv?.tagline}</span>
 
-            <span className="text-sm lg:text-base text-light-text">{`${Math.floor(
-              movie?.runtime / 60
-            )} hr ${movie?.runtime % 60} mins`}</span>
+            <span className="text-sm lg:text-base text-light-text">
+              {tv?.first_air_date.substr(0, 4)} -{" "}
+              {new Date().getFullYear() == tv?.last_air_date.substr(0, 4)
+                ? ""
+                : tv?.last_air_date.substr(0, 4)}
+            </span>
 
             <span className="flex items-center gap-2">
               <AiFillStar fill="#facc15" />
-              {movie.vote_average.toFixed(1)}
+              {tv?.vote_average.toFixed(1)}
             </span>
 
             <span className="flex items-center flex-wrap gap-2">
-              {movie?.spoken_languages?.map((language) => (
+              {tv?.spoken_languages?.map((language) => (
                 <span
                   key={language.id}
                   className="text-light-text text-sm lg:text-base"
@@ -82,19 +85,28 @@ const Movie = () => {
               ))}
             </span>
 
-            <Button external action={movie?.homepage} label="Watch Now" />
+            <Button external action={tv?.homepage} label="Watch Now" />
           </div>
         </div>
 
         <Heading title="Plot" />
         <div className="text-dark-text font-light pb-5 flex flex-col gap-5 lg:text-lg max-w-5xl">
-          {movie?.overview}
+          {tv?.overview}
         </div>
+
+        <Grid>
+          {tv?.seasons?.map((season) => (
+            <div key={season.id}>
+              <Heading title={season.name} />
+              <MovieCard {...season} />
+            </div>
+          ))}
+        </Grid>
 
         <div className="py-5">
           <Heading title="Produced by" />
           <Grid>
-            {movie?.production_companies?.map((company) => (
+            {tv?.production_companies?.map((company) => (
               <CompanyCard
                 key={company.id}
                 name={company?.name}
@@ -109,8 +121,8 @@ const Movie = () => {
 
         <Heading title="Similar to this" />
         <Grid>
-          {similar.map((movie) => (
-            <MovieCard key={movie.id} {...movie} />
+          {similar.map((tv) => (
+            <MovieCard key={tv.id} {...tv} />
           ))}
         </Grid>
       </Container>
@@ -118,4 +130,4 @@ const Movie = () => {
   )
 }
 
-export default Movie
+export default Tv
