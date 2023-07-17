@@ -5,9 +5,10 @@ import Backdrop from "./components/Backdrop.jsx"
 import Container from "./components/Container.jsx"
 import { useContext, useEffect, useState } from "react"
 import { MoviesContext } from "../contexts/moviesContext.jsx"
+import SearchPage from "./pages/SearchPage.jsx"
 
 function App() {
-  const { movies, setMovies, tv, setTv } = useContext(MoviesContext)
+  const { movies, setMovies, tv, setTv, searchQuery } = useContext(MoviesContext)
   const [random, setRandom] = useState(0)
   useEffect(() => {
     if (movies.length === 0) {
@@ -37,7 +38,9 @@ function App() {
     setRandom(randomNumber)
   }, [movies])
 
-  if (!movies.length) return
+  if (!movies.length) return null
+
+  if (searchQuery.length > 2) return <SearchPage />
 
   return (
     <>

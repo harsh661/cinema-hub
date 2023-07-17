@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 import { BiSearch } from "react-icons/bi"
+import { MoviesContext } from "../../contexts/moviesContext"
 
 const Navbar = () => {
+  const { searchQuery, setSearchQuery } = useContext(MoviesContext)
   return (
     <div className="px-5 lg:px-10 xl:px-20 py-5 text-light-gray flex items-center w-full justify-between">
       <svg
@@ -32,6 +34,8 @@ const Navbar = () => {
 
       <div className="text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2">
         <input
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           type="text"
           id="search"
           placeholder="Search anything"

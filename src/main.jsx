@@ -34,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/tv/:id",
         element: <Tv />
+      },
+      {
+        path: "/artist/:id",
+        element: <div>Hello</div>
       }
     ],
   },
