@@ -1,5 +1,5 @@
 import React from "react"
-import {BiSearch} from "react-icons/bi"
+import { BiSearch } from "react-icons/bi"
 
 const Navbar = () => {
   return (
@@ -30,8 +30,16 @@ const Navbar = () => {
         ></path>
       </svg>
 
-      <div className="text-light-gray">
-        <BiSearch size={25}/>
+      <div className="text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search anything"
+          className="text-transparent placeholder:text-transparent outline-none bg-transparent focus-within:text-white focus-within:placeholder:text-light-text w-0 focus-within:w-auto"
+        />
+        <label className="cursor-pointer" htmlFor="search">
+          <BiSearch size={25} />
+        </label>
       </div>
     </div>
   )
