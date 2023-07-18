@@ -8,7 +8,8 @@ import { MoviesContext } from "../contexts/moviesContext.jsx"
 import SearchPage from "./pages/SearchPage.jsx"
 
 function App() {
-  const { movies, setMovies, tv, setTv, searchQuery } = useContext(MoviesContext)
+  const { movies, setMovies, tv, setTv, searchQuery } =
+    useContext(MoviesContext)
   const [random, setRandom] = useState(0)
   useEffect(() => {
     if (movies.length === 0) {
@@ -43,25 +44,27 @@ function App() {
   if (searchQuery.length > 2) return <SearchPage />
 
   return (
-    <>
-      <Container>
-        <Backdrop src={movies[random]?.backdrop_path} banner link={`/movie/${movies[random]?.id}`} title={movies[random]?.title}/>
-        <Heading title="Trending in Movies" />
-        <Grid>
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} {...movie} />
-          ))}
-        </Grid>
-      </Container>
-      <Container>
-        <Heading title="Trending in TV" />
-        <Grid>
-          {tv.map((movie) => (
-            <MovieCard key={movie.id} {...movie} />
-          ))}
-        </Grid>
-      </Container>
-    </>
+    <Container>
+      <Backdrop
+        src={movies[random]?.backdrop_path}
+        banner
+        link={`/movie/${movies[random]?.id}`}
+        title={movies[random]?.title}
+      />
+      <Heading title="Trending in Movies" />
+      <Grid>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} {...movie} />
+        ))}
+      </Grid>
+
+      <Heading title="Trending in TV" />
+      <Grid>
+        {tv.map((movie) => (
+          <MovieCard key={movie.id} {...movie} />
+        ))}
+      </Grid>
+    </Container>
   )
 }
 
