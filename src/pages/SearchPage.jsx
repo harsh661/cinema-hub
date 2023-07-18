@@ -10,9 +10,9 @@ const SearchPage = () => {
   const { searchQuery } = useContext(MoviesContext)
   const [result, setResult] = useState([])
 
-  const movies = result.filter((item) => item.media_type === 'movie')
-  const shows = result.filter((item) => item.media_type === 'tv')
-  const persons = result.filter((item) => item.media_type === 'person')
+  const movies = result.filter((item) => item.media_type === "movie")
+  const shows = result.filter((item) => item.media_type === "tv")
+  const persons = result.filter((item) => item.media_type === "person")
 
   useEffect(() => {
     if (searchQuery.length > 2) {
@@ -28,37 +28,33 @@ const SearchPage = () => {
       fetch(url, options)
         .then((res) => res.json())
         .then((json) => {
-            setResult(json.results)
-            console.log(json)
-            console.log(movies)
+          setResult(json.results)
+          console.log(json)
+          console.log(movies)
         })
         .catch((err) => console.error("error:" + err))
     }
   }, [searchQuery])
   return (
     <Container>
-      {!!persons.length && <Heading title="People" />}
-      <Grid>
-        {persons.map((item) => (
-            <ArtistCard key={item.id} {...item} />
-          )
-        )}
-      </Grid>
-
       {!!movies.length && <Heading title="Movies" />}
       <Grid>
         {movies.map((item) => (
-            <MovieCard key={item.id} {...item} />
-          )
-        )}
+          <MovieCard key={item.id} {...item} />
+        ))}
       </Grid>
 
       {!!shows.length && <Heading title="TV" />}
       <Grid>
         {shows.map((item) => (
-            <MovieCard key={item.id} {...item} />
-          )
-        )}
+          <MovieCard key={item.id} {...item} />
+        ))}
+      </Grid>
+      {!!persons.length && <Heading title="People" />}
+      <Grid>
+        {persons.map((item) => (
+          <ArtistCard key={item.id} {...item} />
+        ))}
       </Grid>
     </Container>
   )
