@@ -28,7 +28,6 @@ const Tv = () => {
         .then((res) => res.json())
         .then((json) => {
           setTv(json)
-          console.log(json)
         })
         .catch((err) => console.error("error:" + err))
 
@@ -36,7 +35,6 @@ const Tv = () => {
         .then((res) => res.json())
         .then((json) => {
           setSimilar(json.results)
-          console.log(json)
         })
         .catch((err) => console.error("error:" + err))
     }

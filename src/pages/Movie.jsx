@@ -28,7 +28,6 @@ const Movie = () => {
         .then((res) => res.json())
         .then((json) => {
           setMovie(json)
-          console.log(json)
         })
         .catch((err) => console.error("error:" + err))
 
@@ -36,7 +35,6 @@ const Movie = () => {
         .then((res) => res.json())
         .then((json) => {
           setSimilar(json.results)
-          console.log(json)
         })
         .catch((err) => console.error("error:" + err))
     }

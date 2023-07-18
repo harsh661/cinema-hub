@@ -29,8 +29,6 @@ const SearchPage = () => {
         .then((res) => res.json())
         .then((json) => {
           setResult(json.results)
-          console.log(json)
-          console.log(movies)
         })
         .catch((err) => console.error("error:" + err))
     }
