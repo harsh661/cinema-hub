@@ -7,7 +7,7 @@ const MovieCard = (movie) => {
   const isTv = !!movie.first_air_date
   return (
     <div className="flex flex-col">
-      {movie.season_number && (
+      {movie.season_number >= 0 && (
         <span className="text-light-gray font-semibold text-sm lg:text-lg py-2">
           {movie?.name}
         </span>
