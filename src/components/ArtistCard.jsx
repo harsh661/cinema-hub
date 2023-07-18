@@ -5,7 +5,7 @@ const ArtistCard = (artist) => {
   if(!artist) return null
   return (
     <Link to={`/artist/${artist.id}`}>
-      <div className="rounded-lg overflow-hidden max-w-[208px]">
+      <div className="rounded-lg overflow-hidden max-w-[208px] aspect-[9/12]">
         <img
           src={`https://image.tmdb.org/t/p/original${artist.profile_path}`}
           alt={artist.name}
