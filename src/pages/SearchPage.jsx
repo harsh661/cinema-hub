@@ -40,7 +40,7 @@ const SearchPage = () => {
       {!!persons.length && <Heading title="People" />}
       <Grid>
         {persons.map((item) => (
-            <ArtistCard {...item} />
+            <ArtistCard key={item.id} {...item} />
           )
         )}
       </Grid>
@@ -48,7 +48,7 @@ const SearchPage = () => {
       {!!movies.length && <Heading title="Movies" />}
       <Grid>
         {movies.map((item) => (
-            <MovieCard {...item} />
+            <MovieCard key={item.id} {...item} />
           )
         )}
       </Grid>
@@ -56,7 +56,7 @@ const SearchPage = () => {
       {!!shows.length && <Heading title="TV" />}
       <Grid>
         {shows.map((item) => (
-            <MovieCard {...item} />
+            <MovieCard key={item.id} {...item} />
           )
         )}
       </Grid>
