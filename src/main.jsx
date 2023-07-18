@@ -6,12 +6,14 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 import Movie from "./pages/Movie.jsx"
 import Tv from "./pages/Tv.jsx"
 import MoviesContextProvider from "../contexts/moviesContext.jsx"
+import Footer from "./components/Footer.jsx"
 
 const Layout = () => {
   return (
     <MoviesContextProvider>
       <Navbar />
       <Outlet />
+      <Footer />
     </MoviesContextProvider>
   )
 }
