@@ -23,7 +23,7 @@ const Movie = () => {
   }
 
   useEffect(() => {
-    if (Object.keys(movie).length == 0) {
+      setMovie({})
       fetch(`https://api.themoviedb.org/3/movie/${params.id}`, options)
         .then((res) => res.json())
         .then((json) => {
@@ -37,7 +37,6 @@ const Movie = () => {
           setSimilar(json.results)
         })
         .catch((err) => console.error("error:" + err))
-    }
   }, [params.id])
 
   if (Object.keys(movie).length == 0) return
