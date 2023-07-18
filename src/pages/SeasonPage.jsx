@@ -6,7 +6,7 @@ import Grid from "../components/Grid.jsx"
 import Heading from "../components/Heading.jsx"
 import Loader from "../components/Loader.jsx"
 import {AiFillStar} from 'react-icons/ai'
-import EpisodeCard from "../components/EpisodeCard.jsx"
+import EpisodeCard from "../components/cards/EpisodeCard.jsx"
 
 const SeasonPage = () => {
   const params = useParams()

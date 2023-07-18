@@ -1,5 +1,5 @@
 import Grid from "./components/Grid.jsx"
-import MovieCard from "./components/MovieCard.jsx"
+import MovieCard from "./components/cards/MovieCard.jsx"
 import Heading from "./components/Heading.jsx"
 import Backdrop from "./components/Backdrop.jsx"
 import Container from "./components/Container.jsx"
@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react"
 import { MoviesContext } from "../contexts/moviesContext.jsx"
 import SearchPage from "./pages/SearchPage.jsx"
 import Loader from "./components/Loader.jsx"
-import ArtistCard from "./components/ArtistCard.jsx"
+import ArtistCard from "./components/cards/ArtistCard.jsx"
 
 function App() {
   const { movies, setMovies, tv, setTv, searchQuery, people, setPeople } =

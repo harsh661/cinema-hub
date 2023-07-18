@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { MoviesContext } from "../../contexts/moviesContext"
 import Heading from "../components/Heading"
-import ArtistCard from "../components/ArtistCard.jsx"
-import MovieCard from "../components/MovieCard"
+import ArtistCard from "../components/cards/ArtistCard.jsx"
+import MovieCard from "../components/cards/MovieCard"
 import Container from "../components/Container"
 import Grid from "../components/Grid"
 
