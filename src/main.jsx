@@ -7,6 +7,7 @@ import Movie from "./pages/Movie.jsx"
 import Tv from "./pages/Tv.jsx"
 import MoviesContextProvider from "../contexts/moviesContext.jsx"
 import Footer from "./components/Footer.jsx"
+import ArtistPage from "./pages/ArtistPage.jsx"
 
 const Layout = () => {
   return (
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/artist/:id",
-        element: <div>Hello</div>
+        element: <ArtistPage />
       }
     ],
   },
