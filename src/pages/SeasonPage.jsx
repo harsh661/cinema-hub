@@ -11,8 +11,6 @@ import EpisodeCard from "../components/EpisodeCard.jsx"
 const SeasonPage = () => {
   const params = useParams()
   const [season, setSeason] = useState({})
-  console.log(params.id)
-  console.log(params.season_number)
 
   useEffect(() => {
       setSeason({})
@@ -29,7 +27,6 @@ const SeasonPage = () => {
         .then((res) => res.json())
         .then((json) => {
           setSeason(json)
-          console.log(json)
         })
         .catch((err) => console.error("error:" + err))
   }, [params.id])
