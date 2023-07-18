@@ -95,7 +95,7 @@ const Tv = () => {
         <Heading title="Seasons" />
         <Grid>
           {tv?.seasons?.map((season) => (
-            <MovieCard key={season.id} {...season} />
+            <MovieCard key={season.id} {...{...season, id: tv.id}} />
           ))}
         </Grid>
 
