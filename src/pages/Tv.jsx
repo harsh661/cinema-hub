@@ -94,12 +94,10 @@ const Tv = () => {
           {tv?.overview}
         </div>
 
+        <Heading title="Seasons" />
         <Grid>
           {tv?.seasons?.map((season) => (
-            <div key={season.id}>
-              <Heading title={season.name} />
-              <MovieCard {...season} />
-            </div>
+            <MovieCard key={season.id} {...season} />
           ))}
         </Grid>
 

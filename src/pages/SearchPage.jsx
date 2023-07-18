@@ -10,6 +10,10 @@ const SearchPage = () => {
   const { searchQuery } = useContext(MoviesContext)
   const [result, setResult] = useState([])
 
+  const movies = result.filter((item) => item.media_type === 'movie')
+  const shows = result.filter((item) => item.media_type === 'tv')
+  const persons = result.filter((item) => item.media_type === 'person')
+
   useEffect(() => {
     if (searchQuery.length > 2) {
       const url = `https://api.themoviedb.org/3/search/multi?query=${searchQuery}`
@@ -26,22 +30,36 @@ const SearchPage = () => {
         .then((json) => {
             setResult(json.results)
             console.log(json)
+            console.log(movies)
         })
         .catch((err) => console.error("error:" + err))
     }
   }, [searchQuery])
   return (
     <Container>
-      <Heading title="Search Results" />
-      <div className="flex flex-wrap gap-5 justify-center">
-        {result.map((item) => (
-          item.media_type == "person" ? (
+      {!!persons.length && <Heading title="People" />}
+      <Grid>
+        {persons.map((item) => (
             <ArtistCard {...item} />
-          ) : (
+          )
+        )}
+      </Grid>
+
+      {!!movies.length && <Heading title="Movies" />}
+      <Grid>
+        {movies.map((item) => (
             <MovieCard {...item} />
           )
-        ))}
-      </div>
+        )}
+      </Grid>
+
+      {!!shows.length && <Heading title="TV" />}
+      <Grid>
+        {shows.map((item) => (
+            <MovieCard {...item} />
+          )
+        )}
+      </Grid>
     </Container>
   )
 }
