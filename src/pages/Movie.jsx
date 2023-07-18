@@ -8,6 +8,7 @@ import MovieCard from "../components/MovieCard"
 import CompanyCard from "../components/CompanyCard"
 import { AiFillStar } from "react-icons/ai"
 import Button from "../components/Button"
+import Loader from "../components/Loader.jsx"
 
 const Movie = () => {
   const params = useParams()
@@ -39,7 +40,7 @@ const Movie = () => {
         .catch((err) => console.error("error:" + err))
   }, [params.id])
 
-  if (Object.keys(movie).length == 0) return
+  if (Object.keys(movie).length == 0) return <Loader />
 
   return (
     <>

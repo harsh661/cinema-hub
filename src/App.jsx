@@ -6,6 +6,7 @@ import Container from "./components/Container.jsx"
 import { useContext, useEffect, useState } from "react"
 import { MoviesContext } from "../contexts/moviesContext.jsx"
 import SearchPage from "./pages/SearchPage.jsx"
+import Loader from "./components/Loader.jsx"
 
 function App() {
   const { movies, setMovies, tv, setTv, searchQuery } =
@@ -39,7 +40,7 @@ function App() {
     setRandom(randomNumber)
   }, [movies])
 
-  if (!movies.length) return null
+  if (!movies.length) return <Loader />
 
   if (searchQuery.length > 2) return <SearchPage />
 
