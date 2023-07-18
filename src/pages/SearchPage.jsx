@@ -34,7 +34,7 @@ const SearchPage = () => {
     }
   }, [searchQuery])
   return (
-    <Container>
+    <Container full>
       {!!movies.length && <Heading title="Movies" />}
       <Grid>
         {movies.map((item) => (
