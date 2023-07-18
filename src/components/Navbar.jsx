@@ -1,9 +1,25 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { BiSearch } from "react-icons/bi"
 import { MoviesContext } from "../../contexts/moviesContext"
 
 const Navbar = () => {
   const { searchQuery, setSearchQuery } = useContext(MoviesContext)
+  const [value, setValue] = useState('')
+
+  const handleChange = (e) => {
+    setValue(e.target.value)
+  }
+
+  useEffect(() => {
+
+    const timeoutId = setTimeout(() => {
+      setSearchQuery(value)
+    }, 500)
+
+    return () => clearTimeout(timeoutId)
+
+  }, [value])
+
   return (
     <div className="px-5 lg:px-10 xl:px-20 py-5 text-light-gray flex items-center w-full justify-between">
       <svg
@@ -34,8 +50,8 @@ const Navbar = () => {
 
       <div className="text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2">
         <input
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={value}
+          onChange={handleChange}
           type="text"
           id="search"
           placeholder="Search anything"
