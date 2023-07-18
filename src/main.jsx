@@ -9,14 +9,17 @@ import MoviesContextProvider from "../contexts/moviesContext.jsx"
 import Footer from "./components/Footer.jsx"
 import ArtistPage from "./pages/ArtistPage.jsx"
 import SeasonPage from "./pages/SeasonPage.jsx"
+import ErrorBoundary from "./components/errorBoundary/ErrorBoundary.jsx"
 
 const Layout = () => {
   return (
-    <MoviesContextProvider>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </MoviesContextProvider>
+    <ErrorBoundary>
+      <MoviesContextProvider>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </MoviesContextProvider>
+    </ErrorBoundary>
   )
 }
 
@@ -31,24 +34,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/movie/:id",
-        element: <Movie />
+        element: <Movie />,
       },
       {
         path: "/tv/:id",
-        element: <Tv />
+        element: <Tv />,
       },
       {
         path: "/artist/:id",
-        element: <ArtistPage />
+        element: <ArtistPage />,
       },
       {
         path: "/tv/:id/season/:season_number",
-        element: <SeasonPage />
-      }
+        element: <SeasonPage />,
+      },
     ],
   },
 ])
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 )
