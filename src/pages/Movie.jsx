@@ -79,7 +79,7 @@ const Movie = () => {
               ))}
             </span>
 
-            <Button external action={movie?.homepage} label="Watch Now" />
+            {movie?.homepage && <Button external action={movie?.homepage} label="Watch Now" />}
           </div>
         </div>
 

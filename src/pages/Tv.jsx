@@ -82,7 +82,7 @@ const Tv = () => {
               ))}
             </span>
 
-            <Button external action={tv?.homepage} label="Watch Now" />
+            {tv?.homepage && <Button external action={tv?.homepage} label="Watch Now" />}
           </div>
         </div>
 
