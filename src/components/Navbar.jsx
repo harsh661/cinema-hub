@@ -55,7 +55,7 @@ const Navbar = () => {
         </svg>
       </Link>
 
-      <div className={`text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2 absolute right-5 border bg-main-bg ${focus ? 'border-light-text left-5 sm:left-auto': 'border-transparent'} transition-colors duration-500`}>
+      <div className={`text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2 absolute right-5 lg:right-10 xl:right-20 border bg-main-bg ${focus ? 'border-light-text left-5 sm:left-auto': 'border-transparent'} transition-colors duration-500`}>
         <input
           value={value}
           size={0}
