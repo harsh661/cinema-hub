@@ -5,6 +5,9 @@ import { AiFillStar } from "react-icons/ai"
 const MovieCard = (movie) => {
   const isMovie = !!movie.release_date
   const isTv = !!movie.first_air_date
+
+  if(!movie.poster_path) return
+
   return (
     <div className="flex flex-col">
       {movie.season_number >= 0 && (

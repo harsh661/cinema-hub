@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const ArtistCard = (artist) => {
-  if (!artist) return null
+  if (!artist || !artist.profile_path) return null
   return (
     <Link
       to={`/artist/${artist.id}`}
