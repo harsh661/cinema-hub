@@ -1,5 +1,7 @@
 # Cinema Hub - Movies App
 
+![Image](https://i.ibb.co/x8nDQkV/Cinemahub.png)
+
 Cinema Hub is a powerful and user-friendly movies app that allows users to search for movies, TV shows, actors, and more. With a vast database of films and television content, users can easily explore and discover their favorite entertainment options. Whether you're looking for related shows, different seasons, or specific episodes, Cinema Hub has you covered.
 
 ## Features
