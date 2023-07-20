@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { BiSearch } from "react-icons/bi"
+import { MdOutlineClear } from 'react-icons/md'
 import { MoviesContext } from "../../contexts/moviesContext"
 import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const { setSearchQuery } = useContext(MoviesContext)
   const [value, setValue] = useState("")
+  const [focus, setFocus] = useState(false)
 
   const handleChange = (e) => {
     setValue(e.target.value)
@@ -19,9 +21,13 @@ const Navbar = () => {
     return () => clearTimeout(timeoutId)
   }, [value])
 
+  const clear = () => {
+    setSearchQuery('')
+  }
+
   return (
-    <div className="px-5 lg:px-10 xl:px-20 py-5 text-light-gray flex items-center w-full justify-between">
-      <Link to='/'>
+    <div className="px-5 lg:px-10 xl:px-20 py-5 text-light-gray flex items-center w-full justify-between relative">
+      <Link className={`${focus && 'opacity-0 sm:opacity-100'}`} to="/">
         <svg
           width="160"
           height="25"
@@ -49,17 +55,18 @@ const Navbar = () => {
         </svg>
       </Link>
 
-      <div className="text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2">
+      <div className={`text-light-gray flex items-center rounded-full pl-5 pr-3 py-2 gap-2 absolute right-5 border bg-main-bg ${focus ? 'border-light-text left-5 sm:left-auto': 'border-transparent'} transition-colors duration-500`}>
         <input
           value={value}
+          size={0}
           onChange={handleChange}
           type="text"
           id="search"
           placeholder="Search anything"
-          className="text-transparent placeholder:text-transparent outline-none bg-transparent focus-within:text-white focus-within:placeholder:text-light-text w-0 focus-within:w-auto"
+          className={`outline-none bg-transparent ${focus ? 'block' : 'hidden'} w-full transition-all duration-500`}
         />
-        <label className="cursor-pointer" htmlFor="search">
-          <BiSearch size={25} />
+        <label onClick={()=>setFocus(prev => !prev)} className="cursor-pointer" htmlFor="search">
+          {focus ? <MdOutlineClear onClick={clear} size={25}/> : <BiSearch size={25} />}
         </label>
       </div>
     </div>
