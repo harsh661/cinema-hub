@@ -26,13 +26,9 @@ Cinema Hub is a powerful and user-friendly movies app that allows users to searc
 
 5. **Enjoy Your Movie Night**: Once you've found the perfect movie or show, sit back, relax, and enjoy your entertainment!
 
-## Installation
-
-Cinema Hub is accessible through any modern web browser. Simply visit [www.cinemahub.com](https://www.cinemahub.com) to start using the app. There's no need to download or install anything!
-
 ## Contributions
 
-We welcome contributions from the open-source community. If you'd like to contribute to Cinema Hub, please check out our [GitHub repository](https://github.com/cinemahub) for more information.
+We welcome contributions from the open-source community. If you'd like to contribute to Cinema Hub, please check out our [GitHub repository](https://github.com/harsh661/cinema-hub) for more information.
 
 ---
 
