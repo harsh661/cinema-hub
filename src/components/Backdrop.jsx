@@ -4,7 +4,7 @@ import Button from "./Button"
 const Backdrop = ({ src, banner, title, link }) => {
   if(!src) return
   return (
-    <div className={`w-full h-[30vh] lg:h-[50vh] relative ${banner && 'rounded-lg overflow-hidden'}`}>
+    <div className={`w-full h-[30vh] lg:h-[50vh] relative ${banner && '-mx-5 sm:mx-auto w-screen sm:w-auto sm:rounded-lg overflow-hidden'}`}>
       <div className="w-full h-full absolute top-0 left-0 right-0 bottom-0">
         <img
           src={`https://image.tmdb.org/t/p/original${src}`}
